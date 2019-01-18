@@ -16,6 +16,13 @@
     "@theia/monaco": "latest",
     "@theia/typescript": "latest",
     "@theia/messages": "latest",
+    "@theia/plugin-ext": "latest",
+    "@theia/file-search": "latest",
+    "@theia/json": "latest",
+    "@theia/console": "latest",
+    "@theia/debug": "latest",
+    "@theia/task" :"latest",
+    "@theia/variable-resolver" : "latest",
     "hello-world-extension": "0.0.0"
   },
   "devDependencies": {
@@ -24,7 +31,8 @@
   "scripts": {
     "prepare": "theia build --mode development",    
     "start": "theia start",
-    "watch": "theia build --watch --mode development"
+    "watch": "theia build --watch --mode development",
+    "startWithPlugins": "export THEIA_PLUGINS=local-dir:../plugins/tinylink && yarn start"
   },
   "theia": {
     "target": "browser"

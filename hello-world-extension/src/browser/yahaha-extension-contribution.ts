@@ -16,27 +16,66 @@ export const YahahaExtensionCommand = {
 
 export namespace IoTMenus{
     export const IOT=[...MAIN_MENU_BAR,'1_iot'];
-    export const IOT_COMPLIE=[...IOT,'1_compile'];
-    export const IOT_BURN =[...IOT,'2_burn'];
-    export const IOT_ABOUT=[...IOT,'3_about'];
+    export const IOT_TINYLINK=[...IOT, '2_tinylink'];
+    export const IOT_TINYSIM=[...IOT, '3_tinysim'];
+    export const IOT_ONELINK=[...IOT, '4_onelink'];
+    export const IOT_ABOUT=[...IOT, '5_about']
 }
 
 export namespace IoTCommands{
-    const IOT_CATEGORY='IoT';
-    export const COMPILE:Command ={
-        id:'iot.complile',
-        category:IOT_CATEGORY,
-        label:'Compile'
-    };
+    const IOT_MENU_CATEGORY='IoT Menu';
 
-    export const BURN:Command ={
-        id:'iot.burn',
-        label:'Burn'
-    };
+    export const TINYLINK: Command = {
+        id:'iot.menu.tinylink',
+        category: IOT_MENU_CATEGORY,
+        label: 'TinyLink'
+    }
 
-    export const ABOUT:Command ={
-        id:'iot.about',
-        label:'About'
+    export const TINYSIM: Command = {
+        id: 'iot.menu.tinysim',
+        category: IOT_MENU_CATEGORY,
+        label: 'TinySim'
+    }
+
+    export const ONELINK: Command = {
+        id: 'iot.menu.onelink',
+        category: IOT_MENU_CATEGORY,
+        label: 'OneLink'
+    }
+
+    export const ABOUT: Command = {
+        id: 'iot.menu.about',
+        category: IOT_MENU_CATEGORY,
+        label: 'About'
+    }
+}
+
+@injectable()
+export class YahahaExtensionMenuContribution implements MenuContribution {
+    registerMenus(menus: MenuModelRegistry): void {
+
+        menus.registerMenuAction(CommonMenus.EDIT_FIND, {
+            commandId: YahahaExtensionCommand.id,
+            label: 'Say yahaha'
+        });
+
+        menus.registerSubmenu(IoTMenus.IOT,'IoT');
+       
+        menus.registerMenuAction(IoTMenus.IOT_TINYLINK,{
+            commandId:IoTCommands.TINYLINK.id
+        })
+
+        menus.registerMenuAction(IoTMenus.IOT_TINYSIM, {
+            commandId: IoTCommands.TINYSIM.id
+        })
+
+        menus.registerMenuAction(IoTMenus.IOT_ONELINK, {
+            commandId: IoTCommands.ONELINK.id
+        })
+
+        menus.registerMenuAction(IoTMenus.IOT_ABOUT, {
+            commandId:IoTCommands.ABOUT.id
+        })
     }
 }
 
@@ -59,54 +98,39 @@ export class YahahaExtensionCommandContribution implements CommandContribution {
             }
         });
 
-        registry.registerCommand(IoTCommands.COMPILE,{
-            execute:()=>this.messageService.info('compile')
+        registry.registerCommand(IoTCommands.TINYLINK, {
+            execute: () => {
+                registry.executeCommand('iot.plugin.tinylink.compile')
+            }
         })
 
-        registry.registerCommand(IoTCommands.BURN,{
-            execute:()=>this.messageService.info('burn')
+        registry.registerCommand(IoTCommands.TINYSIM,{
+            execute: () => {
+                registry.executeCommand('iot.plugin.tinysim.compile')
+            }
+        })
+        
+        registry.registerCommand(IoTCommands.ONELINK, {
+            execute: () => {
+                registry.executeCommand('iot.plugin.onelink.compile')
+            }
         })
 
-        registry.registerCommand(IoTCommands.ABOUT,{
-            execute:()=>this.openAbout()
+        registry.registerCommand(IoTCommands.ABOUT, {
+            execute: () => {
+                this.iotDialog.open()
+            }
         })
-    }
-
-
-    protected async openAbout(){
-        this.iotDialog.open();
-    }
-}
-
-@injectable()
-export class YahahaExtensionMenuContribution implements MenuContribution {
-    registerMenus(menus: MenuModelRegistry): void {
-
-        menus.registerMenuAction(CommonMenus.EDIT_FIND, {
-            commandId: YahahaExtensionCommand.id,
-            label: 'Say yahaha'
-        });
-
-        menus.registerSubmenu(IoTMenus.IOT,'IoT');
-        menus.registerMenuAction(IoTMenus.IOT_COMPLIE,{
-            commandId:IoTCommands.COMPILE.id
-        });
-        menus.registerMenuAction(IoTMenus.IOT_BURN,{
-            commandId:IoTCommands.BURN.id
-        });
-        menus.registerMenuAction(IoTMenus.IOT_ABOUT,{
-            commandId:IoTCommands.ABOUT.id
-        });
     }
 }
 
 @injectable()
 export class YahahaExtensionKeyBindingContribution implements KeybindingContribution{
     registerKeybindings(registry: KeybindingRegistry): void {
-        registry.registerKeybinding({
-            command:IoTCommands.ABOUT.id,
-            keybinding:'f5'
-        })
+        // registry.registerKeybinding({
+        //     command:IoTCommands.ABOUT.id,
+        //     keybinding:'f5'
+        // })
     }
 }
 

@@ -3,7 +3,11 @@
   "scripts": {
     "prepare": "lerna run prepare",
     "rebuild:browser": "theia rebuild:browser",
-    "rebuild:electron": "theia rebuild:electron"
+    "rebuild:electron": "theia rebuild:electron",
+    "build": "bash ./scripts/build.sh",
+    "buildPlugin": "bash ./scripts/buildPlugin.sh",
+    "start": "bash ./scripts/start.sh",
+    "startWithPlugin": "bash ./scripts/startWithPlugin.sh"
   },
   "devDependencies": {
     "lerna": "2.4.0"

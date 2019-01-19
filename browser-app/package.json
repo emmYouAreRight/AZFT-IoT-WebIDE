@@ -23,7 +23,7 @@
     "@theia/debug": "latest",
     "@theia/task" :"latest",
     "@theia/variable-resolver" : "latest",
-    "hello-world-extension": "0.0.0"
+    "tinylink-extension": "0.0.0"
   },
   "devDependencies": {
     "@theia/cli": "latest"

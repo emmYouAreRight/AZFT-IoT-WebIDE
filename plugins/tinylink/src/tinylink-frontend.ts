@@ -26,6 +26,11 @@ namespace IoTCommands {
     };
 }
 
+namespace IoTRUL {
+    export const TINYLINK_LOCAL =
+        "http://tinylink.daixinye.com/webview/tinylink/localcompile";
+}
+
 export function start(context: theia.PluginContext) {
     context.subscriptions.push(
         theia.commands.registerCommand(
@@ -54,7 +59,7 @@ export function start(context: theia.PluginContext) {
                                 }
                             },false)
                         </script>
-                        <iframe id="iframe" src="http://tinylink.daixinye.com/webview/debug" frameborder="0" style="display: block; margin: 0px; overflow: hidden; position: absolute; width: 100%; height: 100%; visibility: visible;" sandbox="allow-same-origin allow-scripts"></iframe>
+                        <iframe id="iframe" src="${IoTRUL.TINYLINK_LOCAL}" frameborder="0" style="display: block; margin: 0px; overflow: hidden; position: absolute; width: 100%; height: 100%; visibility: visible;" sandbox="allow-same-origin allow-scripts"></iframe>
                         `;
                 panel.webview.onDidReceiveMessage((data: any) => {
                     if (data && data.type === "command") {
@@ -69,12 +74,11 @@ export function start(context: theia.PluginContext) {
                                             return theia.window.showErrorMessage("没有选择文件");
                                         }
                                         panel.webview.postMessage({
-                                            from: 'webide',
+                                            from: "webide",
                                             data: {
                                                 path: val[0].path
                                             }
-                                        })
-
+                                        });
                                     });
                                 break;
                             default:

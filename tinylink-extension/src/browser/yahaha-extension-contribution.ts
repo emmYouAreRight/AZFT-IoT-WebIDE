@@ -16,10 +16,8 @@ export const YahahaExtensionCommand = {
 
 export namespace IoTMenus{
     export const IOT=[...MAIN_MENU_BAR,'1_iot'];
-    export const IOT_TINYLINK=[...IOT, '2_tinylink'];
-    export const IOT_TINYSIM=[...IOT, '3_tinysim'];
-    export const IOT_ONELINK=[...IOT, '4_onelink'];
-    export const IOT_ABOUT=[...IOT, '5_about']
+    export const IOT_FUNCTION=[...IOT, '2_function'];
+    export const IOT_ABOUT=[...IOT, '3_about']
 }
 
 export namespace IoTCommands{
@@ -61,20 +59,23 @@ export class YahahaExtensionMenuContribution implements MenuContribution {
 
         menus.registerSubmenu(IoTMenus.IOT,'IoT');
        
-        menus.registerMenuAction(IoTMenus.IOT_TINYLINK,{
-            commandId:IoTCommands.TINYLINK.id
+        menus.registerMenuAction(IoTMenus.IOT_FUNCTION,{
+            commandId:IoTCommands.TINYLINK.id,
+            order: '0'
         })
 
-        menus.registerMenuAction(IoTMenus.IOT_TINYSIM, {
-            commandId: IoTCommands.TINYSIM.id
+        menus.registerMenuAction(IoTMenus.IOT_FUNCTION, {
+            commandId: IoTCommands.TINYSIM.id,
+            order: '1'
         })
 
-        menus.registerMenuAction(IoTMenus.IOT_ONELINK, {
-            commandId: IoTCommands.ONELINK.id
+        menus.registerMenuAction(IoTMenus.IOT_FUNCTION, {
+            commandId: IoTCommands.ONELINK.id,
+            order: '2'
         })
 
         menus.registerMenuAction(IoTMenus.IOT_ABOUT, {
-            commandId:IoTCommands.ABOUT.id
+            commandId:IoTCommands.ABOUT.id,
         })
     }
 }

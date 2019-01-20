@@ -1,7 +1,18 @@
 #!/bin/bash
 
-cd ./hello-world-extension
-yarn
+arg="$1"
 
-cd ../browser-app
-yarn
+if [ "$arg" = "" ] ;then
+    echo "编译 browser-app 和 extension"
+    cd ./tinylink-extension
+    yarn
+
+    cd ../browser-app
+    yarn
+elif [ "$arg" = "plugin" ]; then
+    echo "编译 plugin"
+    cd ./plugins/tinylink
+    yarn build
+fi
+
+

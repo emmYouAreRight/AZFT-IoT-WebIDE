@@ -6,3 +6,6 @@ yarn.lock
 
 browser-app/src-gen
 browser-app/webpack.config.js
+
+*.theia
+dist

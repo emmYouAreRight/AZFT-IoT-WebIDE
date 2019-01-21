@@ -1,4 +1,10 @@
 **/node_modules
 yarn*
+lerna*
 Dockerfile*
 **/.DS_Store
+
+browser-app/lib
+browser-app/src-gen
+browser-app/webpack.config.js
+

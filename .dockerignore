@@ -1,0 +1,4 @@
+**/node_modules
+yarn*
+Dockerfile*
+**/.DS_Store

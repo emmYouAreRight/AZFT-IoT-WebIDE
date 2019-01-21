@@ -3,7 +3,6 @@
   "scripts": {
     "prepare": "lerna run prepare",
     "rebuild:browser": "theia rebuild:browser",
-    "rebuild:electron": "theia rebuild:electron",
     "build": "bash ./scripts/build.sh",
     "start": "bash ./scripts/start.sh"
   },
@@ -11,6 +10,6 @@
     "lerna": "2.4.0"
   },
   "workspaces": [
-    "tinylink-extension", "browser-app", "electron-app"
+    "tinylink-extension", "browser-app" 
   ]
 }

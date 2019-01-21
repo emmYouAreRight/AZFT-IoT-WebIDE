@@ -24,7 +24,7 @@
   },
   "theiaExtensions": [
     {
-      "frontend": "lib/browser/hello-world-extension-frontend-module"
+      "frontend": "lib/browser/tinylink-extension-frontend-module"
     }
   ]
 }

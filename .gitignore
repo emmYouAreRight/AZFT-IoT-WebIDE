@@ -7,5 +7,5 @@ yarn.lock
 browser-app/src-gen
 browser-app/webpack.config.js
 
-electron-app/src-gen
-electron-app/webpack.config.js
+*.theia
+dist

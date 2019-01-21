@@ -3,16 +3,17 @@
 arg="$1"
 
 if [ "$arg" = "" ] ;then
-    echo "编译 browser-app 和 extension"
+    echo "compile browser-app"
+    cd ./browser-app
+    yarn
+elif [ "$arg" = "extension" ]; then
+    echo "compile tinylink-extension"
     cd ./tinylink-extension
     yarn
-
-    cd ../browser-app
-    yarn
 elif [ "$arg" = "plugin" ]; then
-    echo "编译 plugin"
+    echo "compile tinylink-plugin"
     cd ./plugins/tinylink
-    yarn build
+    yarn
 fi
 
 

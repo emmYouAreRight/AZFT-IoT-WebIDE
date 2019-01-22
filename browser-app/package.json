@@ -10,6 +10,7 @@
     "@theia/editor": "latest",
     "@theia/file-search": "latest",
     "@theia/filesystem": "latest",
+    "@theia/git": "^0.3.18",
     "@theia/json": "latest",
     "@theia/languages": "latest",
     "@theia/markers": "latest",

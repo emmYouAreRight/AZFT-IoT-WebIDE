@@ -17,9 +17,8 @@
     "typescript": "latest"
   },
   "scripts": {
-    "prepare": "yarn run clean && yarn run build",
     "clean": "rimraf lib",
-    "build": "tsc --jsx react",
+    "build": "yarn clean && tsc --jsx react",
     "watch": "tsc -w"
   },
   "theiaExtensions": [

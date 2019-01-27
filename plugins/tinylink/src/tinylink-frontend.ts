@@ -31,6 +31,8 @@ namespace IoTURL {
         "http://tinylink.daixinye.com/webview/tinylink/localcompile";
     export const TINYSIM =
         "http://tinylink.daixinye.com/webview/tinysim"
+    export const ONELINK = 
+        "http://tinylink.daixinye.com/webview/onelink"
 
     export function getQueryParameterString() {
         const parameters = theia.env.getQueryParameters() || {};
@@ -134,7 +136,15 @@ export function start(context: theia.PluginContext) {
         theia.commands.registerCommand(
             IoTCommands.ONELINK_COMPILE,
             async (...args: any[]) => {
-                // todo: onelink
+                const panel = theia.window.createWebviewPanel(
+                    "OneLink",
+                    "OneLink",
+                    theia.ViewColumn.Active
+                );
+                panel.webview.html = IoTWebview.generateHTML(
+                    IoTURL.ONELINK + "?" + IoTURL.getQueryParameterString()
+                );
+                panel.webview.onDidReceiveMessage(IoTWebview.onDidReceiveMessage(panel));
             }
         )
     );

@@ -30,7 +30,8 @@
     "@theia/cli": "latest"
   },
   "scripts": {
-    "prepare": "theia build --mode development",
+    "build": "theia build",
+    "dev": "theia build --mode development",
     "start": "theia start",
     "watch": "theia build --watch --mode development",
     "startWithPlugins": "export THEIA_PLUGINS=local-dir:../plugins/tinylink && yarn start"

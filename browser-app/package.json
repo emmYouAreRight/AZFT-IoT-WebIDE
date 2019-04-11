@@ -24,7 +24,8 @@
     "@theia/typescript": "latest",
     "@theia/variable-resolver": "latest",
     "@theia/workspace": "latest",
-    "tinylink-extension": "0.0.0"
+    "tinylink-extension": "0.0.0",
+	"udc-extension": "0.0.0"
   },
   "devDependencies": {
     "@theia/cli": "latest"
